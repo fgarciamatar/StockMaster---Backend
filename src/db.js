@@ -41,7 +41,7 @@ const { A, B} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-//A.hasMany(B);
+A.hasMany(B);
 
 
 module.exports = {
