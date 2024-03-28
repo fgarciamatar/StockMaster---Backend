@@ -42,7 +42,7 @@ const { A, B} = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 A.hasMany(B);
-
+//otras realciones
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
