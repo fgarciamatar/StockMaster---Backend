@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "B",
+    "Profile",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -16,6 +16,17 @@ module.exports = (sequelize) => {
         allowNull: false,
         unique: true,
       },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      token: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+
     },
     { timestamps: false }
   );
