@@ -19,7 +19,6 @@ module.exports = (sequelize) => {
       role: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
       token: {
         type: DataTypes.STRING,
