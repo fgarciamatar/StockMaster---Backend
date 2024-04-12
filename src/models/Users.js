@@ -5,4 +5,4 @@ const User = (name, email, password) =>{
     return user
 }
 
-module.exports = User
+module.exports = {User} 

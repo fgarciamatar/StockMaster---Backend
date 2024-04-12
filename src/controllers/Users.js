@@ -1,13 +1,12 @@
 const UsersData = require("../models/Users");
 const bcrypt = require("bcrypt");
-const e = require("express");
 const jwt = require("jsonwebtoken");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv/config");
 }
 
-const { SWT_KEY } = process.env;
+const { JWT_KEY } = process.env;
 let newUser = {};
 let users = [];
 
@@ -32,6 +31,7 @@ const register = async (req, res) => {
 newUser = UsersData.User(name, email, encryptedPassword)
 
 users = [...users, newUser]
+
   } catch (error) {
     console.log("Ha ocurrido un error",error);
   }
@@ -45,9 +45,9 @@ const login = async (req, res) => {
       res.status(400).send("indica email y/o contraseña")
     }
     const user = users.find(us => us.email === email)
-
+    
     if(user && (await bcrypt.compare(password, user.password))){
-      const token = jwt.sign({email}, SWT_KEY, {expiresIn:"2h"})
+      const token = jwt.sign({email}, JWT_KEY, {expiresIn: "2h"})
       user.token= token
     res.status(200).json(user)
     } else {
@@ -55,7 +55,7 @@ const login = async (req, res) => {
     }
     
   } catch (error) {
-    console.log("Ha ocurrido un error",errorn);
+    console.log("Ha ocurrido un error",error);
   }
 };
 
